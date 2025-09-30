@@ -26,14 +26,16 @@ for animal in animals_data:
     locations = animal.get("locations")
     animal_type = animal.get("characteristics", {}).get("type")
 
+    output += '<li class="cards__item">'
     if name is not None:
-        output += f"Name: {name}\n"
+        output += f"Name: {name}<br/>\n"
     if diet is not None:
-        output += f"Diet: {diet}\n"
+        output += f"Diet: {diet}<br/>\n"
     if locations is not None:
-        output += f"Location: {locations}\n"
+        output += f"Location: {locations}<br/>\n"
     if animal_type is not None:
-        output += f"Type: {animal_type}\n\n"
+        output += f"Type: {animal_type}<br/>\n\n"
+    output += '</li>'
 
 new_html_string = html_data.replace("__REPLACE_ANIMALS_INFO__", output)
 write_to_html("animals.html", new_html_string)
