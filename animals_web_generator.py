@@ -1,5 +1,6 @@
 import json
-import requests
+import data_fetcher
+
 
 
 def user_input():
@@ -7,14 +8,7 @@ def user_input():
     return animal_input
 
 
-def load_from_api(animal_name):
 
-    api_url = 'https://api.api-ninjas.com/v1/animals?name={}'.format(animal_name)
-    response = requests.get(api_url, headers={'X-Api-Key': '6Jw7AB3vhuc/5JJm6CcuTA==AJftFi3iWNyQCHQ6'})
-    if response.status_code == requests.codes.ok:
-        return response.json()
-    else:
-        print("Error:", response.status_code, response.text)
 
 
 def load_html(html):
@@ -30,7 +24,7 @@ def write_to_html(html, html_string):
 
 
 animal = user_input()
-animals_data = load_from_api(animal)
+animals_data = data_fetcher.fetch_data(animal)
 html_data = load_html("animals_template.html")
 output = ""
 if not animals_data:
