@@ -1,10 +1,14 @@
 import json
+import requests
 
+def load_from_api(animal_name):
 
-def load_data(file_path):
-    """Loads a JSON file."""
-    with open(file_path, "r", encoding="utf-8") as handle:
-        return json.load(handle)
+    api_url = 'https://api.api-ninjas.com/v1/animals?name={}'.format(animal_name)
+    response = requests.get(api_url, headers={'X-Api-Key': '6Jw7AB3vhuc/5JJm6CcuTA==AJftFi3iWNyQCHQ6'})
+    if response.status_code == requests.codes.ok:
+        return response.json()
+    else:
+        print("Error:", response.status_code, response.text)
 
 
 def load_html(html):
@@ -19,7 +23,8 @@ def write_to_html(html, html_string):
         file.write(html_string)
 
 
-animals_data = load_data("animals_data.json")
+
+animals_data = load_from_api('fox')
 html_data = load_html("animals_template.html")
 output = ""
 
