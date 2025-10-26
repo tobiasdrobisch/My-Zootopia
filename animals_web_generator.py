@@ -1,4 +1,3 @@
-import json
 import data_fetcher
 
 
@@ -6,9 +5,6 @@ import data_fetcher
 def user_input():
     animal_input = input("Enter a name of an animal:").lower()
     return animal_input
-
-
-
 
 
 def load_html(html):

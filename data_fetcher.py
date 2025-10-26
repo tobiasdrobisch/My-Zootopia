@@ -19,7 +19,7 @@ def fetch_data(animal_name):
   },
   """
   api_url = 'https://api.api-ninjas.com/v1/animals?name={}'.format(animal_name)
-  response = requests.get(api_url, headers={'X-Api-Key': '6Jw7AB3vhuc/5JJm6CcuTA==AJftFi3iWNyQCHQ6'})
+  response = requests.get(api_url, headers={'X-Api-Key': API_KEY})
   if response.status_code == requests.codes.ok:
       return response.json()
   else:
