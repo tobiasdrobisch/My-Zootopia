@@ -1,6 +1,12 @@
 import json
 import requests
 
+
+def user_input():
+    animal_input = input("Enter a name of an animal:").lower()
+    return animal_input
+
+
 def load_from_api(animal_name):
 
     api_url = 'https://api.api-ninjas.com/v1/animals?name={}'.format(animal_name)
@@ -23,8 +29,8 @@ def write_to_html(html, html_string):
         file.write(html_string)
 
 
-
-animals_data = load_from_api('fox')
+animal = user_input()
+animals_data = load_from_api(animal)
 html_data = load_html("animals_template.html")
 output = ""
 
@@ -62,3 +68,4 @@ for animal in animals_data:
 
 new_html_string = html_data.replace("__REPLACE_ANIMALS_INFO__", output)
 write_to_html("animals.html", new_html_string)
+print("Website was successfully generated to the file animals.html.")
